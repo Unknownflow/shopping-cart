@@ -1,10 +1,12 @@
-import './App.css'
+import { useState } from "react"
+import Header from "./components/Header"
 
 function App() {
+  const [cartQty, setCartQty] = useState(0);
 
   return (
     <>
-      <p>Shopping Cart</p>
+     <Header cartQty={cartQty} />
     </>
   )
 }

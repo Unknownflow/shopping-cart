@@ -3,8 +3,9 @@
 	line-height: 1.5;
 	font-weight: 400;
 
-	color: #3bba9c;
+	color: #000;
 	background-color: #2e3047;
+	background-image: url("./assets/background-img.avif");
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -51,16 +52,22 @@ button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
 }
 
-.header {
+.navigation {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100vw;
+	background-color: #fffff0;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.navigation-routes {
 	display: flex;
 	padding: 25px 0;
-	width: 100vw;
 	justify-content: center;
 	align-items: center;
 	gap: 40px;
-	font-weight: bold;
-	font-size: 24px;
-	background-color: #3c3f58;
 }
 
 .shopping-cart {
@@ -71,7 +78,50 @@ button:focus-visible {
 }
 
 .cart-qty {
-	background-color: #2e3047;
+	background-color: #e0115f;
 	border-radius: 50%;
 	padding: 10px;
+}
+
+.shopping-display {
+	padding: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 75px;
+}
+
+.card {
+	width: 275px;
+	height: 500px;
+}
+
+.item-img {
+	width: 275px;
+	height: 275px;
+}
+
+.item-price {
+	margin: 0;
+}
+.item-description-brief {
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.links {
+	color: #000;
+	font-weight: bold;
+}
+
+.homepage {
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }

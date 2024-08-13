@@ -125,3 +125,15 @@ button:focus-visible {
 	justify-content: center;
 	align-items: center;
 }
+
+.add-to-cart-arrow {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.item-qty {
+	background-color: wheat;
+	text-align: center;
+	width: 100%;
+}

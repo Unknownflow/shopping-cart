@@ -118,7 +118,9 @@ button:focus-visible {
 	font-weight: bold;
 }
 
-.homepage {
+.homepage,
+#error-page,
+.loading-page {
 	width: 80%;
 	margin: 0 auto;
 	display: flex;

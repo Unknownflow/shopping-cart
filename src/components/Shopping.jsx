@@ -1,20 +1,37 @@
 import Card from "./Card";
 import { useState, useEffect } from "react";
+import ErrorPage from "./ErrorPage";
+import Loading from "./Loading";
 
 function Shopping({ updateCartItems }) {
   const [shopItems, setShopItems] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function getProducts() {
-      const res = await fetch('https://fakestoreapi.com/products');
-      const data = await res.json();
-      setShopItems(data);
-    }
-    getProducts();
-  })
+    fetch('https://fakestoreapi.com/products')
+      .then((response) =>{
+        if (response.status >= 400) {
+          throw new Error('server error')
+        }
+        console.log(response);
+        return response.json();
+      })
+      .then((response) => setShopItems(response))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, [])
 
   return (
     <>
+      {error && (
+        <ErrorPage 
+          error={error}
+        />
+      )}
+      {loading && (
+        <Loading />
+      )}
       <div className="shopping-display">
         {shopItems.map((shopItem) => {
           return (  
@@ -23,9 +40,7 @@ function Shopping({ updateCartItems }) {
               shopItem={shopItem}
               updateCartItems={updateCartItems}
             />
-          )
-        })
-
+          )})
         }
       </div>
     </>

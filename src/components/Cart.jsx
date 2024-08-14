@@ -1,4 +1,5 @@
 import CartItem from "./CartItem"
+import { Link } from "react-router-dom"
 
 function Cart({ cartItems, updateCartItems, checkoutCart }) {
   return (
@@ -8,6 +9,9 @@ function Cart({ cartItems, updateCartItems, checkoutCart }) {
           <h2>
             Shopping cart is empty
           </h2>
+          <h3>
+            <Link className="links" to="/shopping">Start shopping now</Link>
+          </h3>
         </div>
       }
       {cartItems.length > 0 && (

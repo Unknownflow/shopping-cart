@@ -1,7 +1,7 @@
 import CartItem from "./CartItem"
 import { Link } from "react-router-dom"
 
-function Cart({ cartItems, updateCartItems, checkoutCart }) {
+function Cart({ cartItems, updateCartItems, checkoutCart, clearItem }) {
   return (
     <div>
       {cartItems.length == 0 && 
@@ -25,6 +25,7 @@ function Cart({ cartItems, updateCartItems, checkoutCart }) {
                     shopItem={cartItem}
                     updateCartItems={updateCartItems}
                     qty={cartItem.itemQty}
+                    clearItem={clearItem}
                   />
                 )}
             )}

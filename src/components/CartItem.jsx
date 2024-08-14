@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-function CartItem({ shopItem, updateCartItems, qty }) {
+function CartItem({ shopItem, updateCartItems, qty, clearItem }) {
   const [isPositive, setIsPositive] = useState(true);
   const [itemQty, setItemQty] = useState(qty);
 
@@ -22,6 +24,11 @@ function CartItem({ shopItem, updateCartItems, qty }) {
       }
     }
     updateCartItems(shopItem, newItemQty, direction)
+  }
+
+  const clearItemCard = (id, itemQty) => {
+    setItemQty(0);
+    clearItem(shopItem.id, itemQty)
   }
 
   return (
@@ -55,6 +62,12 @@ function CartItem({ shopItem, updateCartItems, qty }) {
                     onClick={(e) => updateItemQty("increase")}
                   >
                     &#62;
+                  </button>
+                  <button 
+                    className="clear-item" 
+                    onClick={(e) => clearItemCard(shopItem.id, itemQty)}
+                  >
+                    <FontAwesomeIcon icon={faTrashCan} />
                   </button>
                 </div>
               )}

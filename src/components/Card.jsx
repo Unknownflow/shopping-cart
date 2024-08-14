@@ -1,7 +1,9 @@
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import DetailedCard from "./DetailedCard";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Card({ shopItem, updateCartItems }) {
+function Card({ shopItem, updateCartItems, clearItem }) {
   const [isPressed, setIsPressed] = useState(false);
   const [itemQty, setItemQty] = useState(0);
 
@@ -23,6 +25,12 @@ function Card({ shopItem, updateCartItems }) {
       }
     }
     updateCartItems(shopItem, newItemQty, direction)
+  }
+
+  const clearItemCard = (id, itemQty) => {
+    setItemQty(0);
+    setIsPressed(false);
+    clearItem(shopItem.id, itemQty)
   }
 
   const renderDetailedCard = (shopItem) => {
@@ -54,11 +62,27 @@ function Card({ shopItem, updateCartItems }) {
           }
           {isPressed && (
             <div className="add-to-cart-arrow">
-              <button className="arrow-left" onClick={(e) => updateItemQty("decrease")}>&#60;</button>
+              <button 
+                className="arrow-left" 
+                onClick={(e) => updateItemQty("decrease")}
+              >
+                &#60;
+              </button>
               <div className="item-qty">
                 <h3 >{itemQty}</h3>
               </div>
-              <button className="arrow-right" onClick={(e) => updateItemQty("increase")}>&#62;</button>
+              <button 
+                className="arrow-right" 
+                onClick={(e) => updateItemQty("increase")}
+              >
+                &#62;
+              </button>
+              <button 
+                className="clear-item" 
+                onClick={(e) => clearItemCard(shopItem.id, itemQty)}
+              >
+                <FontAwesomeIcon icon={faTrashCan} />
+              </button>
             </div>
           )}
 

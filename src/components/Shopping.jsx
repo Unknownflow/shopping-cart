@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ErrorPage from "./ErrorPage";
 import Loading from "./Loading";
 
-function Shopping({ updateCartItems }) {
+function Shopping({ updateCartItems, clearItem }) {
   const [shopItems, setShopItems] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -39,6 +39,7 @@ function Shopping({ updateCartItems }) {
               key={shopItem.id}
               shopItem={shopItem}
               updateCartItems={updateCartItems}
+              clearItem={clearItem}
             />
           )})
         }

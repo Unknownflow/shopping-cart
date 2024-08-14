@@ -7,7 +7,7 @@ function Navigation({ cartQty }) {
     <>
       <div className="navigation">
         <div className="storename">
-          Elegant Emporium
+          Elegance Emporium
         </div>
         <div className="navigation-routes">
           <div className="home">

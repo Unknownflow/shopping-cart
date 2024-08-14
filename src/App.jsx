@@ -46,7 +46,11 @@ function App() {
   const checkoutCart = (e) => {
     setCartQty(0);
     setCartItems([]);
+  }
 
+  const clearItem = (id, itemQty) => {
+    setCartQty(cartQty - itemQty);
+    setCartItems(array => array.filter(item => item.id != id));
   }
 
   return (
@@ -65,6 +69,7 @@ function App() {
           element={
             <Shopping 
              updateCartItems={updateCartItems}
+             clearItem={clearItem}
             />
           } 
         />
@@ -75,6 +80,7 @@ function App() {
               cartItems={cartItems}
               updateCartItems={updateCartItems}
               checkoutCart={checkoutCart}
+              clearItem={clearItem}
             />
           }
         />

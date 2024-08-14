@@ -9,14 +9,27 @@ function App() {
   const [cartQty, setCartQty] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
-  const updateCartItems = (shopItem, itemQty) => {
+  const updateCartItems = (shopItem, itemQty, direction) => {
     console.log('shop', shopItem, itemQty)
     const cartItemsCopy = [...cartItems];
     var itemFound = false;
 
+    // update cartQty
+    if (direction == "increase") {
+      setCartQty(cartQty+1)
+    } else {
+      setCartQty(cartQty-1)
+    }
+
     for (const cartItem of cartItemsCopy) {
       // check if item id matches n update the item qty
+      console.log(cartItem)
       if (cartItem.id == shopItem.id) {
+        // remove item from cart if item qty is 0
+        if (itemQty == 0) {
+          setCartItems(array => array.filter(item => item.id != cartItem.id))
+          return;
+        }
         cartItem.itemQty = itemQty;
         itemFound = true;
       }
@@ -36,7 +49,6 @@ function App() {
     }
 
     // setCartItems([...cartItems, shopItem]);
-    setCartQty(cartQty+1)
     console.log('qty',cartQty)
 
   }
@@ -66,6 +78,7 @@ function App() {
           element={
             <Cart 
               cartItems={cartItems}
+              updateCartItems={updateCartItems}
             />
           }
         />

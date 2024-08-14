@@ -83,7 +83,8 @@ button:focus-visible {
 	padding: 10px;
 }
 
-.shopping-display {
+.shopping-display,
+.cart-display {
 	padding: 40px;
 	display: flex;
 	justify-content: center;
@@ -136,4 +137,21 @@ button:focus-visible {
 	background-color: wheat;
 	text-align: center;
 	width: 100%;
+}
+
+.empty-shopping-cart {
+	text-align: center;
+}
+
+.checkout-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.arrow-left,
+.arrow-right {
+	font-weight: bold;
+	font-size: 18px;
 }

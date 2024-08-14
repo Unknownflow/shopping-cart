@@ -1,4 +1,3 @@
-import { render } from "react-dom";
 import DetailedCard from "./DetailedCard";
 import { useState } from "react";
 
@@ -24,7 +23,7 @@ function Card({ shopItem, updateCartItems }) {
       }
     }
     console.log('lastqty', newItemQty)
-    updateCartItems(shopItem, newItemQty)
+    updateCartItems(shopItem, newItemQty, direction)
   }
 
   const renderDetailedCard = (shopItem) => {
@@ -56,11 +55,11 @@ function Card({ shopItem, updateCartItems }) {
           }
           {isPressed && (
             <div className="add-to-cart-arrow">
-              <button onClick={(e) => updateItemQty("decrease")}>&#60;</button>
+              <button className="arrow-left" onClick={(e) => updateItemQty("decrease")}>&#60;</button>
               <div className="item-qty">
                 <h3 >{itemQty}</h3>
               </div>
-              <button onClick={(e) => updateItemQty("increase")}>&#62;</button>
+              <button className="arrow-right" onClick={(e) => updateItemQty("increase")}>&#62;</button>
             </div>
           )}
 

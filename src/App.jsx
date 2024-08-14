@@ -10,7 +10,6 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const updateCartItems = (shopItem, itemQty, direction) => {
-    console.log('shop', shopItem, itemQty)
     const cartItemsCopy = [...cartItems];
     var itemFound = false;
 
@@ -23,11 +22,10 @@ function App() {
 
     for (const cartItem of cartItemsCopy) {
       // check if item id matches n update the item qty
-      console.log(cartItem)
       if (cartItem.id == shopItem.id) {
         // remove item from cart if item qty is 0
         if (itemQty == 0) {
-          setCartItems(array => array.filter(item => item.id != cartItem.id))
+          setCartItems(array => array.filter(item => item.id != shopItem.id))
           return;
         }
         cartItem.itemQty = itemQty;
@@ -37,22 +35,19 @@ function App() {
 
     if (!itemFound) {
       shopItem.itemQty = itemQty;
-      console.log('shopitem', shopItem)
       // if item does not exist, append to cart
       setCartItems([...cartItems, shopItem])
-      console.log('cartfound',cartItems)
-
     } else {
       setCartItems(cartItemsCopy);
-      console.log('cartcopy',cartItems)
-
-    }
-
-    // setCartItems([...cartItems, shopItem]);
-    console.log('qty',cartQty)
+    } 
 
   }
 
+  const checkoutCart = (e) => {
+    setCartQty(0);
+    setCartItems([]);
+
+  }
 
   return (
     <>
@@ -79,6 +74,7 @@ function App() {
             <Cart 
               cartItems={cartItems}
               updateCartItems={updateCartItems}
+              checkoutCart={checkoutCart}
             />
           }
         />

@@ -22,7 +22,6 @@ function Card({ shopItem, updateCartItems }) {
         setItemQty(newItemQty)
       }
     }
-    console.log('lastqty', newItemQty)
     updateCartItems(shopItem, newItemQty, direction)
   }
 

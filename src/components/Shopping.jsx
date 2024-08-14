@@ -8,7 +8,6 @@ function Shopping({ updateCartItems }) {
     async function getProducts() {
       const res = await fetch('https://fakestoreapi.com/products');
       const data = await res.json();
-      // console.log('data',data)
       setShopItems(data);
     }
     getProducts();
@@ -17,10 +16,10 @@ function Shopping({ updateCartItems }) {
   return (
     <>
       <div className="shopping-display">
-        {shopItems.map((shopItem, index) => {
+        {shopItems.map((shopItem) => {
           return (  
             <Card
-              key={index}
+              key={shopItem.id}
               shopItem={shopItem}
               updateCartItems={updateCartItems}
             />

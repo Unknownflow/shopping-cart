@@ -1,10 +1,6 @@
 import CartItem from "./CartItem"
 
-function Cart({ cartItems, updateCartItems }) {
-  console.log('cartitems',cartItems)
-  cartItems.map((cartItem,index) => {
-    console.log(index, cartItem, cartItem.title)
-  })
+function Cart({ cartItems, updateCartItems, checkoutCart }) {
   return (
     <div>
       {cartItems.length == 0 && 
@@ -14,23 +10,26 @@ function Cart({ cartItems, updateCartItems }) {
           </h2>
         </div>
       }
-      <div className="cart-display">
-        {cartItems.length > 0 && (
-          cartItems.map((cartItem, index) => {
-            return (
-              <CartItem
-                key={index}
-                shopItem={cartItem}
-                updateCartItems={updateCartItems}
-                qty={cartItem.itemQty}
-              />
-            )
-          })
-        )}
-      </div>
-      <div className="checkout-button">
-        <button>Checkout cart</button>
-      </div>
+      {cartItems.length > 0 && (
+        <>
+          <div className="cart-display">
+            {
+              cartItems.map((cartItem) => {
+                return (
+                  <CartItem
+                    key={cartItem.id}
+                    shopItem={cartItem}
+                    updateCartItems={updateCartItems}
+                    qty={cartItem.itemQty}
+                  />
+                )}
+            )}
+          </div>
+          <div className="checkout-button">
+            <button onClick={checkoutCart}>Checkout cart</button>
+          </div>
+        </>
+      )}
     </div>
   )
   

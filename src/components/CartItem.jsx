@@ -21,7 +21,6 @@ function CartItem({ shopItem, updateCartItems, qty }) {
         setItemQty(newItemQty)
       }
     }
-    console.log('lastqty', newItemQty)
     updateCartItems(shopItem, newItemQty, direction)
   }
 
@@ -42,14 +41,23 @@ function CartItem({ shopItem, updateCartItems, qty }) {
             <div className="add-to-cart">
               {isPositive && (
                 <div className="add-to-cart-arrow">
-                  <button className="arrow-left" onClick={(e) => updateItemQty("decrease")}>&#60;</button>
+                  <button  
+                    className="arrow-left" 
+                    onClick={(e) => updateItemQty("decrease")}
+                  >
+                    &#60;
+                  </button>
                   <div className="item-qty">
                     <h3 >{itemQty}</h3>
                   </div>
-                  <button className="arrow-right" onClick={(e) => updateItemQty("increase")}>&#62;</button>
+                  <button 
+                    className="arrow-right"
+                    onClick={(e) => updateItemQty("increase")}
+                  >
+                    &#62;
+                  </button>
                 </div>
               )}
-
             </div>
           </div>
         </>

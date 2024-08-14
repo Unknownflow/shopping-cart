@@ -7,6 +7,7 @@ function Shopping({ updateCartItems, clearItem }) {
   const [shopItems, setShopItems] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAnyModalOpen, setIsAnyModalOpen] = useState(false);
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -14,7 +15,6 @@ function Shopping({ updateCartItems, clearItem }) {
         if (response.status >= 400) {
           throw new Error('server error')
         }
-        console.log(response);
         return response.json();
       })
       .then((response) => setShopItems(response))
@@ -40,6 +40,8 @@ function Shopping({ updateCartItems, clearItem }) {
               shopItem={shopItem}
               updateCartItems={updateCartItems}
               clearItem={clearItem}
+              isAnyModalOpen={isAnyModalOpen}
+              setIsAnyModalOpen={setIsAnyModalOpen}
             />
           )})
         }

@@ -1,11 +1,12 @@
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import DetailedCard from "./DetailedCard";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PopupDialog from "./PopupDialog";
 
-function Card({ shopItem, updateCartItems, clearItem }) {
+function Card({ shopItem, updateCartItems, clearItem, isAnyModalOpen, setIsAnyModalOpen }) {
   const [isPressed, setIsPressed] = useState(false);
   const [itemQty, setItemQty] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const updateItemQty = (direction) => {
     var newItemQty = itemQty;
@@ -33,67 +34,89 @@ function Card({ shopItem, updateCartItems, clearItem }) {
     clearItem(shopItem.id, itemQty)
   }
 
-  const renderDetailedCard = (shopItem) => {
-    return (
-      <DetailedCard shopItem={shopItem} />
-    )
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+    setIsAnyModalOpen(!isAnyModalOpen);
   }
 
   return (
     <div
       className="card"
     >
+      {isModalOpen && (
+        <PopupDialog 
+          shopItem={shopItem}
+          handleModal={handleModal}
+        />
+      )}
+
       <div>
         <img className="item-img" src={shopItem.image} alt={shopItem.title} />
       </div>
+
       <div className="item-description-brief">
         <div>
           <h3>{shopItem.title}</h3>
           <p className="item-price">${shopItem.price}</p>
         </div>
+
+        <div>
+          <button
+            className="open-modal-button"
+            onClick={handleModal}
+            disabled={isAnyModalOpen}
+          >
+            View more
+          </button>
+        </div>
+
         <div className="add-to-cart">
           {!isPressed &&
-            <button onClick={(e) => {
-              updateItemQty("increase")
-              setIsPressed(true)
-            }}
+            <button
+              disabled={isAnyModalOpen}
+              onClick={(e) => {
+                updateItemQty("increase")
+                setIsPressed(true)
+              }}
               >Add to cart
             </button>
           }
+
           {isPressed && (
             <div className="add-to-cart-arrow">
               <button 
                 className="arrow-left" 
                 onClick={(e) => updateItemQty("decrease")}
+                disabled={isAnyModalOpen}
               >
                 &#60;
               </button>
+
               <div className="item-qty">
                 <h3 >{itemQty}</h3>
               </div>
+
               <button 
                 className="arrow-right" 
                 onClick={(e) => updateItemQty("increase")}
+                disabled={isAnyModalOpen}
               >
                 &#62;
               </button>
+
               <button 
                 className="clear-item" 
                 onClick={(e) => clearItemCard(shopItem.id, itemQty)}
+                disabled={isAnyModalOpen}
               >
                 <FontAwesomeIcon icon={faTrashCan} />
               </button>
+
             </div>
           )}
-
         </div>
-        {/* <div>
-          <button onClick={(e) => renderDetailedCard(shopItem)}>View more info</button>
-        </div> */}
       </div>
-
     </div>
-
   )
 }
 

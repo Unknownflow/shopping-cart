@@ -108,6 +108,11 @@ button:focus-visible {
 	height: 275px;
 }
 
+.item-img-modal {
+	width: 400px;
+	height: 400px;
+}
+
 .item-price {
 	margin: 0;
 }
@@ -184,4 +189,12 @@ h3 {
 	width: 100%;
 	height: calc(100% - 100px);
 	background-size: 100vw 100vh;
+}
+
+dialog {
+	position: fixed;
+	top: 10%;
+	left: 0;
+	width: 800px;
+	height: auto;
 }

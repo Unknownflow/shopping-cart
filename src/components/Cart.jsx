@@ -2,11 +2,12 @@ import CartItem from "./CartItem"
 import { Link } from "react-router-dom"
 
 function Cart({ cartItems, updateCartItems, checkoutCart, clearItem }) {
-  console.log(cartItems)
   var cartTotalCost = 0;
+  
   for (const item of cartItems) {
     cartTotalCost += item.itemQty * item.price;
   }
+  cartTotalCost = (Math.round(cartTotalCost * 100) / 100).toFixed(2)
 
   return (
     <div className="cart">

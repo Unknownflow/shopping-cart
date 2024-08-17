@@ -57,7 +57,7 @@ function Card({ shopItem, updateCartItems, clearItem, isAnyModalOpen, setIsAnyMo
       <div className="item-description-brief">
         <div>
           <h3>{shopItem.title}</h3>
-          <p className="item-price">${shopItem.price}</p>
+          <p className="item-price">${shopItem.price.toFixed(2)}</p>
         </div>
 
         <div>

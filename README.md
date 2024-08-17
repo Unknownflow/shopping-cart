@@ -4,7 +4,7 @@ The main goal of this project was to design a mock shopping cart where the user 
 
 ## 🚀 Demo
 
-https://unknownflow-pokemon-memory-card.netlify.app
+https://unknownflow-shopping-cart.netlify.app/
 
 ## 💻 Technologies used
 

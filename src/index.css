@@ -198,3 +198,9 @@ dialog {
 	width: 800px;
 	height: auto;
 }
+
+.cart-total-cost {
+	display: flex;
+	margin: 20px;
+	justify-content: center;
+}

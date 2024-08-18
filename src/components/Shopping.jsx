@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ErrorPage from "./ErrorPage";
 import Loading from "./Loading";
 
-function Shopping({ updateCartItems, clearItem }) {
+function Shopping({ cartItems, updateCartItems, clearItem }) {
   const [shopItems, setShopItems] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -34,6 +34,24 @@ function Shopping({ updateCartItems, clearItem }) {
       )}
       <div className="shopping-display">
         {shopItems.map((shopItem) => {
+          for (const cartItem of cartItems) {
+            if (cartItem.id == shopItem.id) {
+              console.log('match');
+              return (
+                <Card
+                  key={shopItem.id}
+                  shopItem={shopItem}
+                  updateCartItems={updateCartItems}
+                  clearItem={clearItem}
+                  isAnyModalOpen={isAnyModalOpen}
+                  setIsAnyModalOpen={setIsAnyModalOpen}
+                  isPressedVal={true}
+                  itemQtyVal={cartItem.itemQty}
+                  isModalOpenVal={false}
+                />
+              )
+            }
+          }
           return (  
             <Card
               key={shopItem.id}
@@ -42,6 +60,9 @@ function Shopping({ updateCartItems, clearItem }) {
               clearItem={clearItem}
               isAnyModalOpen={isAnyModalOpen}
               setIsAnyModalOpen={setIsAnyModalOpen}
+              isPressedVal={false}
+              itemQtyVal={0}
+              isModalOpenVal={false}
             />
           )})
         }

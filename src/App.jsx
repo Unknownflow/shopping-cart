@@ -68,6 +68,7 @@ function App() {
           exact path="shopping" 
           element={
             <Shopping 
+             cartItems={cartItems} 
              updateCartItems={updateCartItems}
              clearItem={clearItem}
             />

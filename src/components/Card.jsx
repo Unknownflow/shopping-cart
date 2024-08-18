@@ -3,10 +3,10 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PopupDialog from "./PopupDialog";
 
-function Card({ shopItem, updateCartItems, clearItem, isAnyModalOpen, setIsAnyModalOpen }) {
-  const [isPressed, setIsPressed] = useState(false);
-  const [itemQty, setItemQty] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function Card({ shopItem, updateCartItems, clearItem, isAnyModalOpen, setIsAnyModalOpen, isPressedVal, itemQtyVal, isModalOpenVal }) {
+  const [isPressed, setIsPressed] = useState(isPressedVal); // default : false
+  const [itemQty, setItemQty] = useState(itemQtyVal); // default : 0
+  const [isModalOpen, setIsModalOpen] = useState(isModalOpenVal); // default : false
 
   const updateItemQty = (direction) => {
     var newItemQty = itemQty;

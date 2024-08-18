@@ -36,7 +36,6 @@ function Shopping({ cartItems, updateCartItems, clearItem }) {
         {shopItems.map((shopItem) => {
           for (const cartItem of cartItems) {
             if (cartItem.id == shopItem.id) {
-              console.log('match');
               return (
                 <Card
                   key={shopItem.id}

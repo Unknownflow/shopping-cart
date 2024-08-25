@@ -1,6 +1,6 @@
 # Shopping Cart
 
-The main goal of this project was to design a mock shopping cart where the user can select any items in the store to add to the shopping cart and view the shopping cart. The items in the store is taken from Fakestore API. The payment method is not implemented since this is a mock up of a web store.
+The main goal of this project was to design a mock shopping cart where the user can select any items in the store to add to the shopping cart and view the shopping cart. The items in the store is taken from Fakestore API. The payment method is not implemented since this is a mock up of a web store. The <a href="https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart">project</a> is part of The Odin Project.
 
 ## 🚀 Demo
 
